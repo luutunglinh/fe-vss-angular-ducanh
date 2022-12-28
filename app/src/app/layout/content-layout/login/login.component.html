@@ -6,46 +6,46 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <!-- Email -->
       <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
+        <label for="username" class="form-label">Username</label>
         <input
-          type="email"
+          type="username"
           class="form-control"
-          id="email"
-          formControlName="email"
+          id="username"
+          formControlName="username"
         />
         <div
           class="form-text text-danger"
-          *ngIf="Email.errors?.['required'] && (Email.dirty || Email.touched)"
+          *ngIf="Username.errors?.['required'] && (Username.dirty || Username.touched)"
         >
-          Email is Required
+        Username is Required
         </div>
         <div
           class="form-text text-danger"
-          *ngIf="Email.errors?.['email'] && (Email.dirty || Email.touched)"
+          *ngIf="Username.errors?.['Username'] && (Username.dirty || Username.touched)"
         >
-          Email is Invalid.
+        Username is Invalid.
         </div>
       </div>
 
       <!-- Password -->
       <div class="mb-3">
-        <label for="pwd" class="form-label">Password</label>
+        <label for="password" class="form-label">Password</label>
         <input
           type="password"
           class="form-control"
           id="password"
-          formControlName="pwd"
+          formControlName="password"
         />
 
         <div
           class="form-text text-danger"
-          *ngIf="PWD.errors?.['required'] && (PWD.dirty || PWD.touched)"
+          *ngIf="Password.errors?.['required'] && (Password.dirty || Password.touched)"
         >
           Password is Required
         </div>
         <div
           class="form-text text-danger"
-          *ngIf="PWD.errors?.['minlength'] || PWD.errors?.['maxlength'] && (PWD.dirty || PWD.touched)"
+          *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && (Password.dirty || Password.touched)"
         >
           Password should be at least 6 and at the max 15 characters long.
         </div>
@@ -70,7 +70,7 @@
         <button
           type="submit"
           class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase font-roboto font-medium"
-        >
+          >
           Login
         </button>
       </div>

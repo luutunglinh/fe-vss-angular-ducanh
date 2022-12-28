@@ -7,9 +7,10 @@ import { HomepageComponent } from './layout/content-layout/homepage/homepage.com
 import { HeaderComponent } from './layout/content-layout/header/header.component';
 import { FooterComponent } from './layout/content-layout/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

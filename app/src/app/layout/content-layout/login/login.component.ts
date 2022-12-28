@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HttpService } from 'src/app/http.service';
 
 @Component({
   selector: 'app-login',
@@ -15,17 +16,23 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   message = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private http: HttpService, private fb: FormBuilder) { }
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      pwd: [
+      username: ['',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(32)
+        ]
+      ],
+      password: [
         '',
         [
           Validators.required,
           Validators.minLength(6),
-          Validators.maxLength(15),
+          Validators.maxLength(32),
         ],
       ],
     });
@@ -34,12 +41,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    const formData = new FormData();
+    formData.append("username", this.Username.value);
+    formData.append("password", this.Password.value);
+    this.http.login(formData);
   }
 
-  get Email(): FormControl {
-    return this.loginForm.get('email') as FormControl;
+  get Username(): FormControl {
+    return this.loginForm.get('username') as FormControl;
   }
-  get PWD(): FormControl {
-    return this.loginForm.get('pwd') as FormControl;
+  get Password(): FormControl {
+    return this.loginForm.get('password') as FormControl;
   }
 }
