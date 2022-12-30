@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormControl,
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   message = '';
 
-  constructor(private http: HttpService, private fb: FormBuilder) { }
+  constructor(private http: HttpService, private fb: FormBuilder, private router: Router) { }
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
@@ -36,15 +37,11 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
-    console.log(this.loginForm);
-
   }
 
   login() {
-    const formData = new FormData();
-    formData.append("username", this.Username.value);
-    formData.append("password", this.Password.value);
-    this.http.login(formData);
+    this.http.login(this.Username.value, this.Password.value);
+    this.router.navigate([`home`])
   }
 
   get Username(): FormControl {

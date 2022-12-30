@@ -5,7 +5,7 @@ import { navigationList, product } from '../model/product';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit  {
+export class HeaderComponent implements OnInit {
   cartItems: number = 0
   navigationList: navigationList[] = [
     {
@@ -17,12 +17,16 @@ export class HeaderComponent implements OnInit  {
       subcategories: ['chairs', 'tables'],
     },
   ];
-  constructor(){
+  constructor() {
 
   }
 
   ngOnInit(): void {
 
 
+  }
+
+  logout() {
+    localStorage.removeItem("csrf");
   }
 }
