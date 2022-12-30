@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { navigationList, product } from '../model/product';
+import { Router } from '@angular/router';
+import { navigationList} from '../model/product';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
       subcategories: ['chairs', 'tables'],
     },
   ];
-  constructor() {
+  constructor(private router: Router ) {
 
   }
 
@@ -28,5 +29,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem("csrf");
+    this.router.navigate([`login`])
   }
 }

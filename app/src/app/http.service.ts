@@ -8,8 +8,8 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  private httpHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-    .set('csrf', localStorage.getItem("csrf")!).set('Accept', '*/*').set('Sec-Fetch-Site', 'none');
+  private httpHeaders = new HttpHeaders().set('Content-Type', 'application/json')
+    .set('csrf', localStorage.getItem("csrf")!);
   protected options = {
     headers: this.httpHeaders
   };
@@ -18,10 +18,10 @@ export class HttpService {
     let body = new URLSearchParams();
     body.set('username', username);
     body.set('password', password);
-    this.http.post<any>(`http://localhost:8080/login`, body, this.options).subscribe(resp => {
-      console.log('resp', resp);
-
-      localStorage.setItem("csrf", resp.headers.get('csrf'));
+    let payload = {username: username, password: password}
+    this.http.post<any>(`http://localhost:8080/login`, payload, this.options).subscribe((resp) => {
+      console.log('resp',resp);
+      localStorage.setItem('csrf', resp.token);
     });
 
   }
