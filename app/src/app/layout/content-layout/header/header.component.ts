@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { navigationList} from '../model/product';
+import { navigationList } from '../../../model/product';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
       subcategories: ['chairs', 'tables'],
     },
   ];
-  constructor(private router: Router ) {
+  constructor(private router: Router) {
 
   }
 

@@ -40,8 +40,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.http.login(this.Username.value, this.Password.value);
+    this.message = this.http.login(this.Username.value, this.Password.value)!;
+    // if (this.message!.length == 0) {
     this.router.navigate([`home`])
+    // }
   }
 
   get Username(): FormControl {
