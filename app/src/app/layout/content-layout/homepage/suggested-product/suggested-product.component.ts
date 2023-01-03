@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Category } from '../../model/product';
+import { Category } from 'src/app/model/product';
 
 @Component({
   selector: 'app-suggested-product',

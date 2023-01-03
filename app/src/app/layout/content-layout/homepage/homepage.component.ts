@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SuggestedProduct } from '../../../model/product';
+import { SuggestedProduct } from 'src/app/model/product';
+
 
 @Component({
   selector: 'app-homepage',

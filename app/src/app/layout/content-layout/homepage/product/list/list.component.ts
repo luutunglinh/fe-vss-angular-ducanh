@@ -6,7 +6,6 @@ import { product } from 'src/app/model/product';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
 })
 export class ListComponent {
   constructor(private http: HttpService, private router: Router) { }
