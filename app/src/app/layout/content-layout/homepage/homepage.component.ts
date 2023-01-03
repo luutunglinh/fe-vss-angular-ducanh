@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/product.service';
 import { SuggestedProduct } from '../model/product';
 
 @Component({
@@ -8,6 +9,7 @@ import { SuggestedProduct } from '../model/product';
 })
 export class HomepageComponent implements OnInit {
 
+  products:any = [];
   suggestedProducts: SuggestedProduct[] = [
     {
       banerimage: 'Baner/Baner_Mobile.png',
@@ -34,12 +36,30 @@ export class HomepageComponent implements OnInit {
       },
     },
   ];
+  
 
 
-  constructor() {}
+  constructor(private productService : ProductService) {}
   ngOnInit(): void {
+    this.productService.getProductList().subscribe(
+      data => {
+        this.products = data;
+        console.log(data);
+        
+      }
+    );
     throw new Error('Method not implemented.');
   }
 
+
+}
+interface Product{
+  id : number,
+  code: string,
+  description: string,
+  image:string,
+  price:number,
+  quantity:number,
+  type:number
 
 }
