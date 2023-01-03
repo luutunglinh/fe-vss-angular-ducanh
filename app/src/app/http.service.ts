@@ -27,19 +27,12 @@ export class HttpService {
 
 
   getProducts() {
-    let products: product[] = []
-    this.http.get<product[]>(`http://localhost:8080/product/`).pipe().subscribe(
-      res => {
-        products = res;
-        console.log(products);
-      });
-    console.log('----------', products);
-    return products;
+    return this.http.get<product[]>(`http://localhost:8080/product/`)
   }
 
   getUsers() {
     let users: user[] = []
-    this.http.get<user[]>(`http://localhost:8080/product/`).pipe().subscribe(
+    this.http.get<user[]>(`http://localhost:8080/user/`).subscribe(
       res => {
         users = res;
         console.log(users);

@@ -13,7 +13,9 @@ export class ListComponent {
   products: product[] = [];
 
   ngOnInit() {
-    this.products = this.http.getProducts();
-    console.log('component', this.products);
+    this.http.getProducts().subscribe(
+      res => {
+        this.products  = res;
+      });
   }
 }
