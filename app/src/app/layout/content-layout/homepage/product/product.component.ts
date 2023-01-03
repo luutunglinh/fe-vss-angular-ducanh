@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/model/product';
+import { HttpService } from 'src/app/http.service';
+import { product, Product } from 'src/app/model/product';
 
 @Component({
   selector: 'app-product',
@@ -8,6 +9,7 @@ import { Product } from 'src/app/model/product';
 })
 export class ProductComponent implements OnInit {
   @Input() view: 'grid' | 'list' = 'grid';
+  products: product[] = [];
 
   @Input() product: Product = {
     id: 0,
@@ -22,8 +24,12 @@ export class ProductComponent implements OnInit {
     },
     imageName: '',
   };
-  constructor() {}
+  constructor(private http :HttpService) {}
   ngOnInit(): void {
+    this.http.getProducts().subscribe(
+      res => {
+        this.products  = res;
+      });
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class
   }

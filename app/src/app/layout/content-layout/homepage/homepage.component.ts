@@ -17,22 +17,22 @@ export class HomepageComponent implements OnInit {
         subcategory: 'mobiles',
       },
     },
-    {
-      banerimage: 'Baner/Baner_Laptop.png',
-      category: {
-        id: 0,
-        category: 'electronics',
-        subcategory: 'laptop',
-      },
-    },
-    {
-      banerimage: 'Baner/Baner_Chair.png',
-      category: {
-        id: 0,
-        category: 'funiture',
-        subcategory: 'chairs',
-      },
-    },
+    // {
+    //   banerimage: 'Baner/Baner_Laptop.png',
+    //   category: {
+    //     id: 0,
+    //     category: 'electronics',
+    //     subcategory: 'laptop',
+    //   },
+    // },
+    // {
+    //   banerimage: 'Baner/Baner_Chair.png',
+    //   category: {
+    //     id: 0,
+    //     category: 'funiture',
+    //     subcategory: 'chairs',
+    //   },
+    // },
   ];
 
   constructor() {}
