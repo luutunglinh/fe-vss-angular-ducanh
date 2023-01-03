@@ -30,3 +30,13 @@ export interface Category {
   category: string;
   subcategory: string;
 }
+
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
+  productCategory: Category;
+  price: number;
+  quantity: number;
+  imageName: string;
+}

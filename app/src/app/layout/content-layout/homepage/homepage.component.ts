@@ -4,10 +4,9 @@ import { SuggestedProduct } from '../model/product';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-
   suggestedProducts: SuggestedProduct[] = [
     {
       banerimage: 'Baner/Baner_Mobile.png',
@@ -17,28 +16,24 @@ export class HomepageComponent implements OnInit {
         subcategory: 'mobiles',
       },
     },
-    // {
-    //   banerimage: 'Baner/Baner_Laptop.png',
-    //   category: {
-    //     id: 0,
-    //     category: 'electronics',
-    //     subcategory: 'laptop',
-    //   },
-    // },
-    // {
-    //   banerimage: 'Baner/Baner_Chair.png',
-    //   category: {
-    //     id: 0,
-    //     category: 'funiture',
-    //     subcategory: 'chairs',
-    //   },
-    // },
+    {
+      banerimage: 'Baner/Baner_Laptop.png',
+      category: {
+        id: 0,
+        category: 'electronics',
+        subcategory: 'laptop',
+      },
+    },
+    {
+      banerimage: 'Baner/Baner_Chair.png',
+      category: {
+        id: 0,
+        category: 'funiture',
+        subcategory: 'chairs',
+      },
+    },
   ];
 
-
   constructor() {}
-  ngOnInit(): void {
-  }
-
-
+  ngOnInit(): void {}
 }

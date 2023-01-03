@@ -1,4 +1,6 @@
-<header class="bg-dark w-100 h-100 bg-dark px-4 my-shadow d-flex justify-content-between align-items-center">
+<header
+  class="bg-dark w-100 h-100 bg-dark px-4 my-shadow d-flex justify-content-between align-items-center"
+>
   <div class="text-light fs-2 fw-bold fst-italic">
     <span class="">Shopping coint</span>
   </div>
@@ -9,14 +11,23 @@
         Home
       </button>
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+        <button
+          type="button"
+          class="btn btn-outline-light dropdown-toggle"
+          data-bs-toggle="dropdown"
+        >
           Categories
         </button>
-        <ul class="dropdown-menu fs-5" *ngFor="let item of navigationList">
-          <li class="text-center fw-bold">{{ item.category }}</li>
-          <li *ngFor="let subcategory of item.subcategories" [style.cursor]="'pointer'">
-            <a class="dropdown-item">{{ subcategory }}</a>
-          </li>
+        <ul class="dropdown-menu fs-5">
+          <ng-container *ngFor="let item of navigationList">
+            <li class="text-center fw-bold">{{ item.category }}</li>
+            <li
+              *ngFor="let subcategory of item.subcategories"
+              [style.cursor]="'pointer'"
+            >
+              <a class="dropdown-item">{{ subcategory }}</a>
+            </li>
+          </ng-container>
         </ul>
       </div>
     </div>
@@ -25,8 +36,12 @@
         Cart
         <!-- <span class="badge bg-warning text-dark">{{cartItems}}</span> -->
       </button>
-      <button type="button" class="btn btn-outline-light" routerLink="/login">Login</button>
-      <button type="button" class="btn btn-outline-light" (click)="logout()">Logout</button>
+      <button type="button" class="btn btn-outline-light" routerLink="/login">
+        Login
+      </button>
+      <button type="button" class="btn btn-outline-light" (click)="logout()">
+        Logout
+      </button>
     </div>
   </div>
 </header>
