@@ -18,14 +18,16 @@
         >
           Categories
         </button>
-        <ul class="dropdown-menu fs-5" *ngFor="let item of navigationList">
-          <li class="text-center fw-bold">{{ item.category }}</li>
-          <li
-            *ngFor="let subcategory of item.subcategories"
-            [style.cursor]="'pointer'"
-          >
-            <a class="dropdown-item">{{ subcategory }}</a>
-          </li>
+        <ul class="dropdown-menu fs-5">
+          <ng-container *ngFor="let item of navigationList">
+            <li class="text-center fw-bold">{{ item.category }}</li>
+            <li
+              *ngFor="let subcategory of item.subcategories"
+              [style.cursor]="'pointer'"
+            >
+              <a class="dropdown-item">{{ subcategory }}</a>
+            </li>
+          </ng-container>
         </ul>
       </div>
     </div>
@@ -34,8 +36,12 @@
         Cart
         <!-- <span class="badge bg-warning text-dark">{{cartItems}}</span> -->
       </button>
-      <button type="button" class="btn btn-outline-light" routerLink="/login">Login</button>
-      <button type="button" class="btn btn-outline-light">Logout</button>
+      <button type="button" class="btn btn-outline-light" routerLink="/login">
+        Login
+      </button>
+      <button type="button" class="btn btn-outline-light" (click)="logout()">
+        Logout
+      </button>
     </div>
   </div>
 </header>

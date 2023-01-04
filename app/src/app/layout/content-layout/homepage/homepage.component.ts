@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { ProductService } from 'src/app/product.service';
 import { SuggestedProduct } from '../model/product';
+=======
+import { SuggestedProduct } from 'src/app/model/product';
+
+>>>>>>> f227cf5cea80035f3313722c932598fe11255c4c
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
+<<<<<<< HEAD
 
   products:any = [];
+=======
+>>>>>>> f227cf5cea80035f3313722c932598fe11255c4c
   suggestedProducts: SuggestedProduct[] = [
     {
       banerimage: 'Baner/Baner_Mobile.png',
@@ -19,25 +27,26 @@ export class HomepageComponent implements OnInit {
         subcategory: 'mobiles',
       },
     },
-    {
-      banerimage: 'Baner/Baner_Laptop.png',
-      category: {
-        id: 0,
-        category: 'electronics',
-        subcategory: 'laptop',
-      },
-    },
-    {
-      banerimage: 'Baner/Baner_Chair.png',
-      category: {
-        id: 0,
-        category: 'funiture',
-        subcategory: 'chairs',
-      },
-    },
+    // {
+    //   banerimage: 'Baner/Baner_Laptop.png',
+    //   category: {
+    //     id: 0,
+    //     category: 'electronics',
+    //     subcategory: 'laptop',
+    //   },
+    // },
+    // {
+    //   banerimage: 'Baner/Baner_Chair.png',
+    //   category: {
+    //     id: 0,
+    //     category: 'funiture',
+    //     subcategory: 'chairs',
+    //   },
+    // },
   ];
   
 
+<<<<<<< HEAD
 
   constructor(private productService : ProductService) {}
   ngOnInit(): void {
@@ -52,6 +61,10 @@ export class HomepageComponent implements OnInit {
   }
 
 
+=======
+  constructor() {}
+  ngOnInit(): void {}
+>>>>>>> f227cf5cea80035f3313722c932598fe11255c4c
 }
 interface Product{
   id : number,

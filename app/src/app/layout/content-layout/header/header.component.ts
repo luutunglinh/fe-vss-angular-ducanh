@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { navigationList, product } from '../model/product';
+import { Router } from '@angular/router';
+import { navigationList } from 'src/app/model/product';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit  {
-  cartItems: number = 0
+export class HeaderComponent implements OnInit {
+  cartItems: number = 0;
   navigationList: navigationList[] = [
     {
       category: 'electronics',
@@ -17,12 +19,12 @@ export class HeaderComponent implements OnInit  {
       subcategories: ['chairs', 'tables'],
     },
   ];
-  constructor(){
+  constructor(private router: Router) {}
 
-  }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-
-
+  logout() {
+    localStorage.removeItem('csrf');
+    this.router.navigate([`login`]);
   }
 }

@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-  loadChildren:() => import('./layout/content-layout/homepage/homepage.module').then((m)=>m.HomepageModule)
+    loadChildren: () => import('./layout/content-layout/homepage/homepage.module').then((m) => m.HomepageModule)
   },
   {
     path: 'home',
-  loadChildren:() => import('./layout/content-layout/homepage/homepage.module').then((m)=>m.HomepageModule)
+    loadChildren: () => import('./layout/content-layout/homepage/homepage.module').then((m) => m.HomepageModule)
   },
   {
     path: 'cart',
@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./layout/content-layout/login/login.module').then((m) => m.LoginModule),
   },
+  {
+    path: 'user',
+    loadChildren: () => import('./layout/content-layout/user/list/list.module').then((m) => m.ListModule),
+  }
 ];
 
 @NgModule({

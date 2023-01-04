@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HttpService } from 'src/app/http.service';
 
 @Component({
   selector: 'app-login',
@@ -15,31 +17,39 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   message = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private http: HttpService, private fb: FormBuilder, private router: Router) { }
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      pwd: [
+      username: ['',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(32)
+        ]
+      ],
+      password: [
         '',
         [
           Validators.required,
           Validators.minLength(6),
-          Validators.maxLength(15),
+          Validators.maxLength(32),
         ],
       ],
     });
-    console.log(this.loginForm);
-
   }
 
   login() {
+    this.message = this.http.login(this.Username.value, this.Password.value)!;
+    // if (this.message!.length == 0) {
+    this.router.navigate([`home`])
+    // }
   }
 
-  get Email(): FormControl {
-    return this.loginForm.get('email') as FormControl;
+  get Username(): FormControl {
+    return this.loginForm.get('username') as FormControl;
   }
-  get PWD(): FormControl {
-    return this.loginForm.get('pwd') as FormControl;
+  get Password(): FormControl {
+    return this.loginForm.get('password') as FormControl;
   }
 }
