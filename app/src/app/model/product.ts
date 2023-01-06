@@ -7,11 +7,19 @@ export interface product {
   quantity: number;
 }
 
+// export interface cart {
+//   id: number;
+//   image: string;
+//   name: string;
+//   price: number;
+//   quantity: number;
+// }
 export interface cart {
   id: number;
-  image: string;
-  name: string;
-  price: number;
+  quantity: number;
+}
+export interface order{
+  id: number;
   quantity: number;
 }
 
@@ -39,4 +47,11 @@ export interface Product {
   price: number;
   quantity: number;
   imageName: string;
+}
+export interface CartProduct{
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+  quantity: number;
 }

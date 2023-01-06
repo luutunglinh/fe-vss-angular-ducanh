@@ -1,13 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { product } from './model/product';
+import { cart, product } from './model/product';
 import { user } from './model/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-
+  carts:any = []
+  check:boolean = true;
+  cartProducts:any = [];
   constructor(private http: HttpClient) { }
 
   private httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -29,6 +31,9 @@ export class HttpService {
   getProducts() {
     return this.http.get<product[]>(`http://localhost:8080/product/`)
   }
+  getProductDetail(id:any){
+    return this.http.get<product>(`http://localhost:8080/product/`+id);
+  }
 
   getUsers() {
     let users: user[] = []
@@ -40,4 +45,24 @@ export class HttpService {
     console.log('----------', users);
     return users;
   }
+
+  addToCart(cart:any){
+    // console.log(cart ,"service");
+    // this.carts = cart
+    this.check = true;
+    for (let item of this.carts){
+      if(item[0] == cart[0] ){
+        this.check = false;
+        item[1]++;
+      }
+    }
+    if (this.check == true ){
+      this.carts.push(cart);
+    }
+
+  }
+  
+
+  
+
 }
