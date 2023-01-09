@@ -6,27 +6,38 @@ import { user } from 'src/app/model/user';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.scss'],
+
 })
 export class ListComponent {
 
   constructor(private http: HttpService, private router: Router) { }
 
-  users: user[] = [{ id: 1, username: 'test', address: 'test', phone: '041864654', role: 1 }];
+  users: user[] = [];
 
   ngOnInit(): void {
-    // this.users = this.http.getUsers();
-    // console.log('component', this.users);
+    this.http.getUsers().subscribe(
+      res => {
+        this.users = res;
+      });
   }
 
-  delete(arg0: number) {
-    throw new Error('Method not implemented.');
+  delete(id: number) {
+    this.http.deleteUser(id).subscribe(
+      res => {
+        this.http.getUsers().subscribe(
+          res => {
+            this.users = res;
+          });
+      }
+    );
+
   }
-  edit(_t30: user) {
-    throw new Error('Method not implemented.');
+  edit(user: user) {
+    this.router.navigate([`user/${user.id}`])
   }
   create() {
-    throw new Error('Method not implemented.');
+    this.router.navigate([`user/create`])
   }
 
 

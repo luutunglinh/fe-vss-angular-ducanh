@@ -21,6 +21,14 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./layout/content-layout/user/list/list.module').then((m) => m.ListModule),
+  },
+  {
+    path: 'user/create',
+    loadChildren: () => import('./layout/content-layout/user/form/form.module').then((m) => m.FormModule),
+  },
+  {
+    path: 'user/:id',
+    loadChildren: () => import('./layout/content-layout/user/form/form.module').then((m) => m.FormModule),
   }
 ];
 

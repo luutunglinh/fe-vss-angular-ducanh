@@ -7,9 +7,9 @@ import { user } from './model/user';
   providedIn: 'root'
 })
 export class HttpService {
-  carts:any = []
-  check:boolean = true;
-  cartProducts:any = [];
+  carts: any = []
+  check: boolean = true;
+  cartProducts: any = [];
   constructor(private http: HttpClient) { }
 
   private httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -19,50 +19,49 @@ export class HttpService {
 
   login(username: string, password: string) {
     let payload = { username: username, password: password };
-    var message = '';
-    this.http.post<any>(`http://localhost:8080/login`, payload, this.options).subscribe(
-      res => {
-        localStorage.setItem("csrf", res.token);
-      }
-    );
+    return this.http.post<any>(`http://localhost:8080/login`, payload, this.options);
   }
 
 
   getProducts() {
     return this.http.get<product[]>(`http://localhost:8080/product/`)
   }
-  getProductDetail(id:any){
-    return this.http.get<product>(`http://localhost:8080/product/`+id);
+  getProductDetail(id: any) {
+    return this.http.get<product>(`http://localhost:8080/product/` + id);
   }
 
   getUsers() {
-    let users: user[] = []
-    this.http.get<user[]>(`http://localhost:8080/user/`).subscribe(
-      res => {
-        users = res;
-        console.log(users);
-      });
-    console.log('----------', users);
-    return users;
+    return this.http.get<user[]>(`http://localhost:8080/user/`);
   }
 
-  addToCart(cart:any){
+  addToCart(cart: any) {
     // console.log(cart ,"service");
     // this.carts = cart
     this.check = true;
-    for (let item of this.carts){
-      if(item[0] == cart[0] ){
+    for (let item of this.carts) {
+      if (item[0] == cart[0]) {
         this.check = false;
         item[1]++;
       }
     }
-    if (this.check == true ){
+    if (this.check == true) {
       this.carts.push(cart);
     }
 
   }
-  
 
-  
+  getUser(id: number) {
+    let url = `http://localhost:8080/user/${id}`;
+    return this.http.get<user>(url);
+  }
+
+  saveUser(user: user) {
+    return this.http.post<user>(`http://localhost:8080/user`, user, this.options);
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete<number>(`http://localhost:8080/user/${id}`);
+  }
+
 
 }

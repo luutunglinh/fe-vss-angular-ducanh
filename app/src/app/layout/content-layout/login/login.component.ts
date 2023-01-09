@@ -40,10 +40,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.message = this.http.login(this.Username.value, this.Password.value)!;
-    // if (this.message!.length == 0) {
-    this.router.navigate([`home`])
-    // }
+    this.http.login(this.Username.value, this.Password.value).subscribe(
+      res => {
+        localStorage.setItem("csrf", res.token);
+        this.router.navigate([`home`])
+      },
+      err => {
+        this.message = err.error.message;
+      }
+    );
   }
 
   get Username(): FormControl {
