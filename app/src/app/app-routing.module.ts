@@ -30,7 +30,8 @@ const routes: Routes = [
     path: 'user/:id',
     loadChildren: () => import('./layout/content-layout/user/form/form.module').then((m) => m.FormModule),
   },
-  { path: 'order', loadChildren: () => import('./layout/content-layout/order/order.module').then(m => m.OrderModule) }
+  { path: 'order', loadChildren: () => import('./layout/content-layout/order/order.module').then(m => m.OrderModule) },
+  { path: 'order-detail', loadChildren: () => import('./layout/content-layout/order-detail/order-detail.module').then(m => m.OrderDetailModule) }
 ];
 
 @NgModule({

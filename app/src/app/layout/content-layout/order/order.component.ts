@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -6,10 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent {
-  ngOnInit() {
-    
-    
-    
-    
+  constructor(private router: Router){
+
+  }
+  ngOnInit( ) {
+  }
+  orderDetail(){
+    this.router.navigate(["/order-detail"]);
   }
 }
