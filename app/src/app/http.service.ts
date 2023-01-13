@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { order } from './model/order';
 import { cart, product } from './model/product';
 import { user } from './model/user';
 
@@ -32,6 +33,9 @@ export class HttpService {
 
   getUsers() {
     return this.http.get<user[]>(`http://localhost:8080/user/`);
+  }
+  getOrders() {
+    return this.http.get<order[]>(`http://localhost:8080/order/`);
   }
 
   addToCart(cart: any) {
